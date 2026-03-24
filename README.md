@@ -56,7 +56,7 @@ Setup Steps
 
 Clone the repository
 
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/Charangh09/smart.git
 cd your-repo
 
 Backend setup
