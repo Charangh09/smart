@@ -1,155 +1,111 @@
-TaskFlow - Task Management Web Application
+# Task Management Web Application
 
-This is a full-stack task management web application built using the MERN stack. The purpose of this project is to help users manage their daily tasks efficiently by providing features like task creation, tracking, filtering, and analytics.
+## 1. Project Title and Description
 
----
+This project is a Task Management web application built with the MERN stack. It helps users organize their daily work by creating tasks, updating progress, tracking completion, and reviewing analytics in one place.
 
-Project Overview
+It is a full-stack MERN application with a React frontend, Node.js and Express backend, and MongoDB database.
 
-The application allows users to organize their work by creating tasks, updating them, and marking them as completed. It also provides filtering and search options to quickly find tasks, along with a dashboard that shows useful insights about task progress.
+## 2. Project Overview
 
----
+Users create an account, log in, and manage personal tasks. They can add new tasks, edit or delete existing ones, mark tasks as completed, filter and search tasks, and view analytics that show progress and task distribution.
 
-Features
+## 3. Features
 
-Authentication
+- JWT-based authentication with signup and login
+- Task management: create, update, delete, and mark complete
+- Filtering by status and priority
+- Search by task title
+- Analytics dashboard with summary and charts
 
-Users can sign up and log in securely. Authentication is handled using JSON Web Tokens, and passwords are stored in a hashed format.
+## 4. Technology Stack
 
-Task Management
+- Frontend: React (Vite), Tailwind CSS
+- Backend: Node.js, Express
+- Database: MongoDB Atlas
 
-Users can create, update, delete, and mark tasks as completed. Each task includes a title, description, status, priority, and due date.
+## 5. Setup Steps
 
-Filtering and Search
+### Clone Repository
 
-Tasks can be filtered by status and priority. Users can also search tasks by title and sort them based on different criteria.
-
-Analytics
-
-The application provides insights such as total tasks, completed tasks, pending tasks, and completion percentage. Charts are used to visualize this data.
-
-User Interface
-
-The application has a clean and responsive interface with dark mode support, making it easy to use across different devices.
-
----
-
-Technology Stack
-
-Frontend
-
-React with Vite
-Tailwind CSS
-
-Backend
-
-Node.js
-Express.js
-
-Database
-
-MongoDB Atlas
-
----
-
-Setup Steps
-
-Clone the repository
-
+```bash
 git clone https://github.com/Charangh09/smart.git
-cd your-repo
+cd smart
+```
 
-Backend setup
+### Setup Backend
 
-cd server
-npm install
-npm start
-
-Frontend setup
-
-cd client
+```bash
+cd backend
 npm install
 npm run dev
+```
 
----
+### Setup Frontend
 
-Environment Variables
+Open a new terminal:
 
-Create a .env file in the backend folder and add:
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-MONGO_URI=your_mongodb_connection
-JWT_SECRET=your_secret_key
+## 6. Environment Variables
 
-Create a .env file in the frontend folder and add:
+Create `.env` files in both `backend` and `frontend` folders.
 
-VITE_API_URL=http://localhost:5000
+### Backend (`backend/.env`)
 
----
+```env
+MONGO_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_jwt_secret
+```
 
-API Endpoints
+### Frontend (`frontend/.env`)
 
-Authentication
+```env
+VITE_API_URL=http://localhost:5000/api
+```
 
-POST /api/auth/signup
-Creates a new user account
+## 7. API Endpoints
 
-POST /api/auth/login
-Authenticates user and returns a token
+### Authentication
 
-Task Management
+- `POST /api/auth/signup`
+- `POST /api/auth/login`
 
-GET /api/tasks
-Fetch all tasks for the logged-in user
+### Tasks
 
-POST /api/tasks
-Create a new task
+- `GET /api/tasks`
+- `POST /api/tasks`
+- `PUT /api/tasks/:id`
+- `DELETE /api/tasks/:id`
+- `PATCH /api/tasks/:id/complete`
 
-PUT /api/tasks/
-Update an existing task
+### Filtering
 
-DELETE /api/tasks/
-Delete a task
+- `GET /api/tasks?status=`
+- `GET /api/tasks?priority=`
+- `GET /api/tasks?search=`
 
-PATCH /api/tasks//complete
-Mark a task as completed
+## 8. Design Decisions
 
-Filtering and Search
+- MERN stack is used because JavaScript is used across frontend and backend, which keeps development simple and consistent.
+- JWT authentication is used because it supports secure, stateless authentication for APIs.
+- MongoDB is used because task data is flexible and maps naturally to document-based storage.
+- REST API design is followed because it is standard, easy to test, and easy to integrate with frontend clients.
+- Analytics is included to help users understand productivity trends, not just store tasks.
 
-GET /api/tasks?status=Todo
-Filter tasks by status
+## 9. Future Improvements
 
-GET /api/tasks?priority=High
-Filter tasks by priority
+- Drag and drop task reordering
+- Real-time notifications and reminders
+- Email notifications for due dates
+- Team collaboration with shared workspaces
+- Attachments and comments for tasks
+- Better reporting and export options
 
-GET /api/tasks?search=keyword
-Search tasks by title
+## 10. Final Note
 
----
-
-Design Decisions
-
-The project follows a modular structure by separating frontend and backend to maintain scalability and clarity.
-
-JWT authentication is used to ensure secure access to protected routes without maintaining server-side sessions.
-
-MongoDB is chosen because it provides flexibility in storing task-related data and works well with JavaScript-based applications.
-
-React is used for building a dynamic and responsive user interface, while Tailwind CSS helps in maintaining a clean and consistent design.
-
-The backend is designed using RESTful APIs to keep communication between client and server simple and structured.
-
-The analytics feature is implemented to give users a quick overview of their productivity, improving usability.
-
----
-
----
-
-Future Improvements
-
-Future enhancements include adding drag and drop functionality, notifications, improved analytics, and user profile customization.
-
----
-
-Final Note
-
-This project demonstrates practical implementation of full-stack development concepts and focuses on building a clean, user-friendly, and scalable application.
+This project is built as a practical full-stack learning and portfolio application. It focuses on clean architecture, real-world features, and clear separation between frontend and backend responsibilities.
