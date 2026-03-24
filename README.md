@@ -1,5 +1,7 @@
 # Task Management Web Application
 
+Live link: https://frontend-bbh17a1j6-sricharans-projects-be5baa67.vercel.app
+
 ## 1. Project Title and Description
 
 This project is a Task Management web application built with the MERN stack. It helps users organize their daily work by creating tasks, updating progress, tracking completion, and reviewing analytics in one place.
