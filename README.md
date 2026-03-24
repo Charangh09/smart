@@ -59,49 +59,63 @@ A modern task management web app with authentication, task CRUD, filtering, pagi
 - Analytics cards + pie/bar charts
 - Responsive UI with dark mode toggle
 
-## Deploy On Render
+## Deploy: MongoDB Atlas + Cyclic + Vercel
 
-This repository includes a Render Blueprint file at [render.yaml](render.yaml).
+This project is ready for the stack you requested:
 
-### Option A: One-Click Blueprint Deploy (Recommended)
+- Database: MongoDB Atlas
+- Backend: Cyclic
+- Frontend: Vercel
 
-1. Push this project to GitHub.
-2. In Render, choose New -> Blueprint.
-3. Select your repository.
-4. Render will create two services:
-   - `taskflow-api` (Node web service)
-   - `taskflow-web` (Static frontend)
-5. Set required backend env vars in Render:
-   - `MONGO_URI`
-   - `JWT_SECRET`
-6. After backend is live, copy its public URL and set frontend env var:
-   - `VITE_API_BASE_URL=https://<your-backend-service>.onrender.com/api`
-7. Trigger a redeploy of `taskflow-web` after setting `VITE_API_BASE_URL`.
+### 1) MongoDB Atlas (Database)
 
-### Option B: Manual Services
+1. Create a free cluster in MongoDB Atlas.
+2. In Database Access, create a database user.
+3. In Network Access, allow your backend host (or `0.0.0.0/0` for quick setup).
+4. Copy connection string and replace placeholders:
+   - `mongodb+srv://<username>:<password>@<cluster-url>/task-manager?retryWrites=true&w=majority`
 
-Create services manually in Render with these settings:
+### 2) Cyclic (Backend)
 
-Backend (`taskflow-api`):
-- Type: Web Service
-- Root Directory: `backend`
-- Build Command: `npm install`
-- Start Command: `npm start`
-- Health Check Path: `/api/health`
-- Env Vars:
-  - `NODE_ENV=production`
-  - `MONGO_URI=<your-mongodb-connection-string>`
-  - `JWT_SECRET=<your-strong-secret>`
+Create a Node app from this repo and configure:
 
-Frontend (`taskflow-web`):
-- Type: Static Site
-- Root Directory: `frontend`
-- Build Command: `npm install && npm run build`
-- Publish Directory: `dist`
-- Env Vars:
-  - `VITE_API_BASE_URL=https://<your-backend-service>.onrender.com/api`
+- Root directory: `backend`
+- Start command: `npm start`
 
-### Notes
+Set environment variables in Cyclic:
 
-- Use MongoDB Atlas (or another hosted MongoDB), since Render does not provide MongoDB by default.
-- Free-tier Render web services may spin down when idle.
+- `NODE_ENV=production`
+- `MONGO_URI=<your-atlas-connection-string>`
+- `JWT_SECRET=<your-strong-secret>`
+- `CORS_ORIGIN=https://<your-vercel-domain>`
+
+After deploy, verify health endpoint:
+
+- `https://<your-cyclic-backend-domain>/api/health`
+
+### 3) Vercel (Frontend)
+
+Import this same GitHub repo in Vercel with:
+
+- Framework preset: `Vite`
+- Root directory: `frontend`
+- Build command: `npm run build`
+- Output directory: `dist`
+
+Set frontend environment variable in Vercel:
+
+- `VITE_API_BASE_URL=https://<your-cyclic-backend-domain>/api`
+
+The file [frontend/vercel.json](frontend/vercel.json) is included so React Router routes work on refresh.
+
+### 4) Final Step (Important)
+
+Once Vercel gives you the final frontend URL:
+
+1. Copy that Vercel URL.
+2. Update `CORS_ORIGIN` in Cyclic to this URL.
+3. Redeploy backend.
+
+### Optional: Render
+
+If you want to deploy on Render later, [render.yaml](render.yaml) is already included.
