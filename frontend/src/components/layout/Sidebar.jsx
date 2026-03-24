@@ -26,7 +26,7 @@ function Sidebar({ isOpen, onClose }) {
       ) : null}
 
       <aside
-        className={`glass panel fixed left-0 top-0 z-40 flex h-screen w-[270px] flex-col items-stretch border-r px-4 py-4 transition-transform duration-300 lg:sticky lg:z-20 lg:w-72 lg:translate-x-0 lg:px-6 ${
+        className={`glass panel fixed left-0 top-0 z-40 flex h-screen w-[270px] flex-col items-stretch border-r px-4 py-4 transition-transform duration-300 lg:z-20 lg:w-72 lg:translate-x-0 lg:px-6 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -67,7 +67,7 @@ function Sidebar({ isOpen, onClose }) {
             notifyInfo('You have been signed out');
             navigate('/login');
           }}
-          className="mt-3 flex items-center gap-3 rounded-xl bg-gradient-to-r from-rose-500 to-orange-500 px-4 py-3 text-sm font-semibold text-white transition hover:scale-[1.02]"
+          className="mt-auto flex items-center gap-3 rounded-xl bg-gradient-to-r from-rose-500 to-orange-500 px-4 py-3 text-sm font-semibold text-white transition hover:scale-[1.02]"
         >
           <LogOut size={16} />
           Logout

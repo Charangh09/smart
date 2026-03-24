@@ -34,7 +34,7 @@ function AppLayout() {
       <div className="pointer-events-none absolute -left-20 top-10 h-56 w-56 rounded-full bg-teal-400/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-24 top-44 h-64 w-64 rounded-full bg-orange-400/20 blur-3xl" />
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-      <div className="flex min-h-screen flex-1 flex-col">
+      <div className="flex min-h-screen flex-1 flex-col lg:ml-72">
         <Topbar
           isDark={isDark}
           setIsDark={setIsDark}
