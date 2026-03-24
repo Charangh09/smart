@@ -22,6 +22,25 @@ app.use(
 app.use(express.json());
 app.use(morgan("dev"));
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "Task Manager API is running",
+    health: "/api/health",
+  });
+});
+
+app.get("/api", (req, res) => {
+  res.status(200).json({
+    message: "Task Manager API",
+    endpoints: {
+      health: "/api/health",
+      authSignup: "/api/auth/signup",
+      authLogin: "/api/auth/login",
+      tasks: "/api/tasks",
+    },
+  });
+});
+
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "ok" });
 });
