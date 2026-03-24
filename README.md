@@ -1,121 +1,155 @@
-# TaskFlow - Full-Stack Task Management App
+TaskFlow - Task Management Web Application
 
-A modern task management web app with authentication, task CRUD, filtering, pagination, and analytics.
+This is a full-stack task management web application built using the MERN stack. The purpose of this project is to help users manage their daily tasks efficiently by providing features like task creation, tracking, filtering, and analytics.
 
-## Tech Stack
+---
 
-- Frontend: React + Vite + Tailwind CSS + Recharts + Framer Motion
-- Backend: Node.js + Express + JWT + bcrypt
-- Database: MongoDB + Mongoose
+Project Overview
 
-## Project Structure
+The application allows users to organize their work by creating tasks, updating them, and marking them as completed. It also provides filtering and search options to quickly find tasks, along with a dashboard that shows useful insights about task progress.
 
-- `backend/` Express API and MongoDB models
-- `frontend/` React client app
+---
 
-## Backend Setup
+Features
 
-1. Go to backend:
-   - `cd backend`
-2. Install dependencies:
-   - `npm install`
-3. Create env file:
-   - copy `.env.example` to `.env`
-4. Fill env values:
-   - `PORT=5000`
-   - `MONGO_URI=mongodb://127.0.0.1:27017/task-manager`
-   - `JWT_SECRET=<your-strong-secret>`
-5. Start backend:
-   - `npm run dev`
+Authentication
 
-## Frontend Setup
+Users can sign up and log in securely. Authentication is handled using JSON Web Tokens, and passwords are stored in a hashed format.
 
-1. Go to frontend:
-   - `cd frontend`
-2. Install dependencies:
-   - `npm install`
-3. Create env file:
-   - copy `.env.example` to `.env`
-4. Start frontend:
-   - `npm run dev`
+Task Management
 
-## API Endpoints
+Users can create, update, delete, and mark tasks as completed. Each task includes a title, description, status, priority, and due date.
 
-- `POST /api/auth/signup`
-- `POST /api/auth/login`
-- `GET /api/tasks`
-- `POST /api/tasks`
-- `PUT /api/tasks/:id`
-- `DELETE /api/tasks/:id`
-- `GET /api/tasks/analytics/summary`
+Filtering and Search
 
-## Feature Notes
+Tasks can be filtered by status and priority. Users can also search tasks by title and sort them based on different criteria.
 
-- JWT-protected task routes
-- Password hashing with bcrypt
-- Email/password validation
-- Task filters by status, priority, and title search
-- Combined filters and pagination
-- Analytics cards + pie/bar charts
-- Responsive UI with dark mode toggle
+Analytics
 
-## Deploy: MongoDB Atlas + Cyclic + Vercel
+The application provides insights such as total tasks, completed tasks, pending tasks, and completion percentage. Charts are used to visualize this data.
 
-This project is ready for the stack you requested:
+User Interface
 
-- Database: MongoDB Atlas
-- Backend: Cyclic
-- Frontend: Vercel
+The application has a clean and responsive interface with dark mode support, making it easy to use across different devices.
 
-### 1) MongoDB Atlas (Database)
+---
 
-1. Create a free cluster in MongoDB Atlas.
-2. In Database Access, create a database user.
-3. In Network Access, allow your backend host (or `0.0.0.0/0` for quick setup).
-4. Copy connection string and replace placeholders:
-   - `mongodb+srv://<username>:<password>@<cluster-url>/task-manager?retryWrites=true&w=majority`
+Technology Stack
 
-### 2) Cyclic (Backend)
+Frontend
 
-Create a Node app from this repo and configure:
+React with Vite
+Tailwind CSS
 
-- Root directory: `backend`
-- Start command: `npm start`
+Backend
 
-Set environment variables in Cyclic:
+Node.js
+Express.js
 
-- `NODE_ENV=production`
-- `MONGO_URI=<your-atlas-connection-string>`
-- `JWT_SECRET=<your-strong-secret>`
-- `CORS_ORIGIN=https://<your-vercel-domain>`
+Database
 
-After deploy, verify health endpoint:
+MongoDB Atlas
 
-- `https://<your-cyclic-backend-domain>/api/health`
+---
 
-### 3) Vercel (Frontend)
+Setup Steps
 
-Import this same GitHub repo in Vercel with:
+Clone the repository
 
-- Framework preset: `Vite`
-- Root directory: `frontend`
-- Build command: `npm run build`
-- Output directory: `dist`
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
 
-Set frontend environment variable in Vercel:
+Backend setup
 
-- `VITE_API_BASE_URL=https://<your-cyclic-backend-domain>/api`
+cd server
+npm install
+npm start
 
-The file [frontend/vercel.json](frontend/vercel.json) is included so React Router routes work on refresh.
+Frontend setup
 
-### 4) Final Step (Important)
+cd client
+npm install
+npm run dev
 
-Once Vercel gives you the final frontend URL:
+---
 
-1. Copy that Vercel URL.
-2. Update `CORS_ORIGIN` in Cyclic to this URL.
-3. Redeploy backend.
+Environment Variables
 
-### Optional: Render
+Create a .env file in the backend folder and add:
 
-If you want to deploy on Render later, [render.yaml](render.yaml) is already included.
+MONGO_URI=your_mongodb_connection
+JWT_SECRET=your_secret_key
+
+Create a .env file in the frontend folder and add:
+
+VITE_API_URL=http://localhost:5000
+
+---
+
+API Endpoints
+
+Authentication
+
+POST /api/auth/signup
+Creates a new user account
+
+POST /api/auth/login
+Authenticates user and returns a token
+
+Task Management
+
+GET /api/tasks
+Fetch all tasks for the logged-in user
+
+POST /api/tasks
+Create a new task
+
+PUT /api/tasks/
+Update an existing task
+
+DELETE /api/tasks/
+Delete a task
+
+PATCH /api/tasks//complete
+Mark a task as completed
+
+Filtering and Search
+
+GET /api/tasks?status=Todo
+Filter tasks by status
+
+GET /api/tasks?priority=High
+Filter tasks by priority
+
+GET /api/tasks?search=keyword
+Search tasks by title
+
+---
+
+Design Decisions
+
+The project follows a modular structure by separating frontend and backend to maintain scalability and clarity.
+
+JWT authentication is used to ensure secure access to protected routes without maintaining server-side sessions.
+
+MongoDB is chosen because it provides flexibility in storing task-related data and works well with JavaScript-based applications.
+
+React is used for building a dynamic and responsive user interface, while Tailwind CSS helps in maintaining a clean and consistent design.
+
+The backend is designed using RESTful APIs to keep communication between client and server simple and structured.
+
+The analytics feature is implemented to give users a quick overview of their productivity, improving usability.
+
+---
+
+---
+
+Future Improvements
+
+Future enhancements include adding drag and drop functionality, notifications, improved analytics, and user profile customization.
+
+---
+
+Final Note
+
+This project demonstrates practical implementation of full-stack development concepts and focuses on building a clean, user-friendly, and scalable application.
