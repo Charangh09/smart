@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #f2f7fb;
+  --bg-soft: #dce8f2;
+  --bg-muted: #ffffff;
+  --text-main: #0c3c64;
+  --accent-1: #1484e4;
+  --accent-2: #6bbcfb;
+  --accent-3: #0c3c64;
+  --accent-4: #816664;
+  --accent-5: #9cb4c8;
+  --ring: rgba(20, 132, 228, 0.34);
+}
+
+.dark {
+  --bg-main: #1f2832;
+  --bg-soft: #28313a;
+  --bg-muted: #2d3945;
+  --text-main: #e6edf5;
+  --ring: rgba(107, 188, 251, 0.26);
+}
+
+html {
+  font-size: 16.5px;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 8% 10%, rgba(20, 132, 228, 0.28), transparent 30%),
+    radial-gradient(circle at 85% 16%, rgba(129, 102, 100, 0.24), transparent 30%),
+    radial-gradient(circle at 68% 72%, rgba(107, 188, 251, 0.24), transparent 32%),
+    linear-gradient(160deg, var(--bg-main), var(--bg-soft));
+  background-attachment: fixed;
+  line-height: 1.55;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.glass {
+  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--bg-muted) 78%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.dark .glass {
+  background: color-mix(in srgb, var(--bg-muted) 74%, transparent);
+}
+
+.panel {
+  border: 1px solid color-mix(in srgb, var(--accent-2) 14%, #94a3b8);
+  border-radius: 1rem;
+  box-shadow: 0 20px 40px -28px rgba(12, 60, 100, 0.45);
+}
+
+.gradient-btn {
+  background-image: linear-gradient(120deg, var(--accent-1), var(--accent-2), var(--accent-4));
+  background-size: 160% 160%;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background-position 0.25s ease;
+}
+
+.gradient-btn:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 10px 25px -12px rgba(20, 132, 228, 0.65);
+  background-position: 100% 0;
+}
+
+.field {
+  border: 1px solid color-mix(in srgb, var(--accent-2) 18%, #94a3b8);
+  background: color-mix(in srgb, var(--bg-muted) 94%, transparent);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field:focus {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 4px var(--ring);
+  outline: none;
+}
+
+.text-gradient {
+  background: linear-gradient(110deg, var(--accent-3), var(--accent-1), var(--accent-4));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
