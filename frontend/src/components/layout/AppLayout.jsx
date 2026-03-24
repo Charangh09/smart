@@ -30,7 +30,7 @@ function AppLayout() {
   }, [location.pathname]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden text-slate-900 dark:text-slate-100 lg:flex">
+    <div className="relative min-h-screen overflow-x-hidden text-slate-900 dark:text-slate-100 lg:flex">
       <div className="pointer-events-none absolute -left-20 top-10 h-56 w-56 rounded-full bg-teal-400/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-24 top-44 h-64 w-64 rounded-full bg-orange-400/20 blur-3xl" />
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
